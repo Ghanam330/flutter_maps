@@ -5,8 +5,8 @@ class IntroTextWidget extends StatelessWidget {
   final double fontsize;
   final Color color;
   final FontWeight? fontWeight;
-
-  const IntroTextWidget({Key? key,required this.text,required this.fontsize, required this.color, this.fontWeight}) : super(key: key);
+final double? margin ;
+  const IntroTextWidget({Key? key,required this.text,required this.fontsize,required this.margin, required this.color, this.fontWeight}) : super(key: key);
 
 
 
@@ -20,7 +20,6 @@ class IntroTextWidget extends StatelessWidget {
           color: color,
           fontSize: fontsize,
           fontWeight: fontWeight,
-
         ),
       ),
     );

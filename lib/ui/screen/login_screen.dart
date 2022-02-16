@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_maps/ui/widget/button_widget.dart';
 import 'package:flutter_maps/ui/widget/form_field_flag_widget.dart';
 import 'package:flutter_maps/ui/widget/intro_text_widget.dart';
 import 'package:flutter_maps/ui/widget/text_form_field_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   late String phoneNumber;
+  final GlobalKey<FormState> _phoneFormKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +21,17 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   IntroTextWidget(
+                    margin: 0,
                     text: 'What is your number?',
                     fontsize: 24,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                   IntroTextWidget(
+                    margin: 2,
                     text: 'please enter phone number to verify your account',
                     fontsize: 18,
                     color: Colors.black,
@@ -36,24 +41,32 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 110,
               ),
-              Expanded(
-                flex: 1,
-                child: TextFormFieldFlagWidget(
-                  tex1: generateCountryFlag(),
-                  tex2: ' +20 ',
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: TextFormFieldFlagWidget(
+                      tex1: generateCountryFlag(),
+                      tex2: ' +20 ',
+                    ),
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: FormFieldWidget(
+                      onSave: (v) {
+                        phoneNumber = v!;
+                      },
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
-                width: 16,
+                height: 30,
               ),
-              Expanded(
-                flex: 2,
-                child: FormFieldWidget(
-                  onSave: (v) {
-                    phoneNumber = v!;
-                  },
-                ),
-              )
+              ButtonWidgetMaps(onpressed: () {}, text: 'Next'),
             ],
           ),
         ),
